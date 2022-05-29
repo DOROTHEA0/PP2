@@ -16,9 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import mainView
-from django.conf.urls.static import serve
-from django.conf import settings
-from django.urls import re_path # 因为需要用到正则匹配所以导入它
 
 urlpatterns = [
     #re_path('^stiaic/(?P<path>.*)',serve,{'document_root':settings.STATIC_ROOT}), # 用于处理static里的文件
