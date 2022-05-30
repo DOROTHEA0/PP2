@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-=h^c=62s1rdrum=9mv808@kk#wn+_jk*45icv*gyg-b(g(=k#f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dorothea0.pythonanywhere.com']
+ALLOWED_HOSTS = ['dorothea0.pythonanywhere.com',
+                 'localhost']
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'csc',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +121,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'PP2/static'), ]
 
 #STATIC_ROOT = os.path.join(BASE_DIR,'static')  #用于处理静态文件
-#MEDIA_ROOT = os.path.join(BASE_DIR,'media') # 用于处理上传的文件
+MEDIA_ROOT = os.path.join(BASE_DIR, 'PP2/media') # 用于处理上传的文件
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

@@ -16,12 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import mainView
+from csc import views
+from django.urls import re_path
+from django.views.static import serve
+from PP2 import settings
 
 urlpatterns = [
     #re_path('^stiaic/(?P<path>.*)',serve,{'document_root':settings.STATIC_ROOT}), # 用于处理static里的文件
-    #re_path('^media/(?P<path>.*)',serve,{'document_root':settings.MEDIA_ROOT}), # 用于处理上传的文件
+    re_path('^media/(?P<path>.*)',serve,{'document_root':settings.MEDIA_ROOT}), # 用于处理上传的文件
     path('admin/', admin.site.urls),
-    path('main/', mainView.to_main, name='main'),
+    path('', mainView.to_main, name='main'),
     path('meeting_details/', mainView.to_meeting_details, name='mt_d'),
-    path('meeting/', mainView.to_meeting, name='mt')
+    path('meeting/', mainView.to_meeting, name='mt'),
+    path('login/', views.to_login, name='to_login'),
 ]
