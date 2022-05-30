@@ -26,7 +26,7 @@ urlpatterns = [
     re_path('^media/(?P<path>.*)',serve,{'document_root':settings.MEDIA_ROOT}), # 用于处理上传的文件
     path('admin/', admin.site.urls),
     path('', mainView.to_main, name='main'),
-    path('meeting_details/', mainView.to_meeting_details, name='mt_d'),
-    path('meeting/', mainView.to_meeting, name='mt'),
+    path('view_details/(?P<aid>d+)/', mainView.to_meeting_details, name='mt_d'),
+    path('view/', mainView.to_meeting, name='mt'),
     path('login/', views.to_login, name='to_login'),
 ]

@@ -31,9 +31,14 @@ class Animal(models.Model):
     discover_data = models.DateField(auto_now=True)
     picture = models.ImageField(upload_to='img', default='img/default.jpg')
     catgories = models.CharField(max_length=32, choices=CatChoice.choices, default=CatChoice.other)
+    description = models.TextField(default='This is a descriptive text that you can replace with any text, '
+                                           'such as species description, location of discovery, time of discovery, '
+                                           'etc.')
+    location = models.CharField(max_length=64, default='Australia, Canberra')
 
     def __str__(self):
         return self.animal_name
 
     class Meta:
         db_table = 'Animal'
+        ordering = ['-discover_data']

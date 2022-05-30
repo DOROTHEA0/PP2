@@ -74,7 +74,7 @@
                               <a href="javascript:void(0)">Pages</a>
                               <ul class="sub-menu">
                                   <li><a href="{%url 'mt'%}">Upcoming Meetings</a></li>
-                                  <li><a href="{%url 'mt_d'%}">Meeting Details</a></li>
+                                  <li><a href="{%url 'mt'%}">Meeting Details</a></li>
                               </ul>
                           </li>
                           <li class="scroll-to-section"><a href="#courses">Features</a></li>
@@ -205,74 +205,25 @@
         </div>
         <div class="col-lg-8">
           <div class="row">
+            {%for animal in animals%}
             <div class="col-lg-6">
               <div class="meeting-item">
                 <div class="thumb">
                   <div class="price">
-                    <span>Discoverer: Walker</span>
+                    <span>Discoverer: {{animal.discoverer.full_name}}</span>
                   </div>
-                  <a href="{%url 'mt_d'%}"><img src="/static/assets/images/A1.jpg" alt="White Egret"></a>
+                  <a href="{%url 'mt_d' animal.id%}"><img src="/media{{animal.picture.url}}" alt="{{animal.animal_name}}"></a>
                 </div>
                 <div class="down-content">
                   <div class="date">
-                    <h6>Nov <span>10</span></h6>
+                    <h6>{{animal.discover_data.month}} <span>{{animal.discover_data.day}}</span></h6>
                   </div>
-                  <a href="{%url 'mt_d'%}"><h4>White Egret</h4></a>
-                  <p>Ornithopoda<br>Known species: 4 species</p>
+                  <a href="{%url 'mt_d' animal.id%}"><h4>{{animal.animal_name}}</h4></a>
+                  <p>{{animal.catgories}}</p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="meeting-item">
-                <div class="thumb">
-                  <div class="price">
-                    <span>Discoverer: Jameson</span>
-                  </div>
-                  <a href="{%url 'mt_d'%}"><img src="/static/assets/images/A2.jpg" alt="Squirrel"></a>
-                </div>
-                <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>24</span></h6>
-                  </div>
-                  <a href="{%url 'mt_d'%}"><h4>Squirrel</h4></a>
-                  <p>Mammalia<br>Known species: 285 species</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="meeting-item">
-                <div class="thumb">
-                  <div class="price">
-                    <span>Discoverer: Durand</span>
-                  </div>
-                  <a href="{%url 'mt_d'%}"><img src="/static/assets/images/A3.jpg" alt="Koala"></a>
-                </div>
-                <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>26</span></h6>
-                  </div>
-                  <a href="{%url 'mt_d'%}"><h4>Koala</h4></a>
-                  <p>Mammalia<br>Known species: 1 specie</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="meeting-item">
-                <div class="thumb">
-                  <div class="price">
-                    <span>Discoverer: Manley</span>
-                  </div>
-                  <a href="{%url 'mt_d'%}"><img src="/static/assets/images/A4.jpg" alt="Antelope"></a>
-                </div>
-                <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>30</span></h6>
-                  </div>
-                  <a href="{%url 'mt_d'%}"><h4>Antelope</h4></a>
-                  <p>Mammalia<br>Known species: 86 species</p>
-                </div>
-              </div>
-            </div>
+            {%endfor%}
           </div>
         </div>
       </div>
