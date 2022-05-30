@@ -29,4 +29,5 @@ urlpatterns = [
     path('view_details/(?P<aid>d+)/', mainView.to_meeting_details, name='mt_d'),
     path('view/', mainView.to_meeting, name='mt'),
     path('login/', views.to_login, name='to_login'),
+    path('l/', views.logout, name='logout')
 ]
