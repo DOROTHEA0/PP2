@@ -22,12 +22,12 @@ from django.views.static import serve
 from PP2 import settings
 
 urlpatterns = [
-    #re_path('^stiaic/(?P<path>.*)',serve,{'document_root':settings.STATIC_ROOT}), # 用于处理static里的文件
-    re_path('^media/(?P<path>.*)',serve,{'document_root':settings.MEDIA_ROOT}), # 用于处理上传的文件
+    re_path('^media/(?P<path>.*)',serve,{'document_root':settings.MEDIA_ROOT}),
     path('admin/', admin.site.urls),
     path('', mainView.to_main, name='main'),
     path('view_details/(?P<aid>d+)/', mainView.to_meeting_details, name='mt_d'),
     path('view/', mainView.to_meeting, name='mt'),
     path('login/', views.to_login, name='to_login'),
+    path('register/', views.to_register, name='to_register'),
     path('l/', views.logout, name='logout')
 ]

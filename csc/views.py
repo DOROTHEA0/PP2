@@ -2,8 +2,22 @@ from django.shortcuts import render
 from csc.models import Animal, CSCUser
 # Create your views here.
 
+
 def to_login(request):
+    if request.POST.get('type') == 'register':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        occupation = request.POST.get('occupation')
+        print(email)
+        try:
+            CSCUser.objects.get(email=email)
+            return render(request, 'CS/register.html', {'err_msg': '*email is already registered'})
+        except CSCUser.DoesNotExist:
+            user = CSCUser(email=email, password=password, full_name=name, occupation=occupation)
+            user.save()
     return render(request, 'CS/login.html')
+
 
 def logout(request):
     request.session['uid'] = None
@@ -11,5 +25,9 @@ def logout(request):
     if len(animals) > 4:
         animals = animals[0: 4]
     return render(request, 'CS/index.html', {'animals': animals, 'USER': None})
+
+
+def to_register(request):
+    return render(request, 'CS/register.html')
 
 

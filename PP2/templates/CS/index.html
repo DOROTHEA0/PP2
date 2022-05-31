@@ -10,7 +10,7 @@
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <title>Community of</title>
+    <title>Citizen Science Community &#8211; Open access to Australia’s biodiversity data</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
@@ -22,10 +22,6 @@
     <link rel="stylesheet" href="{%static 'assets/css/owl.css'%}">
     <link rel="stylesheet" href="{%static 'assets/css/lightbox.css'%}">
 <!--
-
-
-
-
 
 -->
   </head>
@@ -49,9 +45,9 @@
               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
               {% if USER is not None %}
               <li><a href="#">Hello {{USER.full_name}}</a></li>
-              <li><a href="{% url 'logout'%} ">Logout</a></li>
+              <li><a href="{% url 'logout'%}">Logout</a></li>
               {% else %}
-              <li><a href="{% url 'to_login'%} ">Login</a></li>
+              <li><a href="{% url 'to_login'%}">Login</a></li>
               {% endif %}
             </ul>
           </div>
@@ -68,7 +64,7 @@
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
                       <a href="{%url 'main'%}" class="logo">
-                          citizen science test page
+                          citizen science community
                       </a>
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
@@ -79,11 +75,11 @@
                           <li class="has-sub">
                               <a href="javascript:void(0)">Pages</a>
                               <ul class="sub-menu">
-                                  <li><a href="{%url 'mt'%}">Upcoming Meetings</a></li>
+                                  <li><a href="{%url 'mt'%}">Upcoming Animals</a></li>
                                   <li><a href="{%url 'mt'%}">Meeting Details</a></li>
                               </ul>
                           </li>
-                          <li class="scroll-to-section"><a href="#courses">Features</a></li>
+                          <li class="scroll-to-section"><a href="#courses">Map</a></li>
                           <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
                       </ul>        
                       <a class='menu-trigger'>
@@ -110,7 +106,7 @@
                 <div class="caption">
               <h6>Hello Researchers</h6>
               <h2>Open access to Australia’s biodiversity data</h2>
-              <p>Welcome to CS testpage</p>
+              <p>Welcome to Citizen Science Community(CSC)</p>
               <div class="main-button-red">
                   <div class="scroll-to-section"><a href="#contact">Join Us Now!</a></div>
               </div>
@@ -715,7 +711,8 @@
       </div>
     </div>
     <div class="footer">
-      <p>Copyright © 2022 PP2</p>
+      <p>Copyright © 2022 CSC
+          <br>Design: <a href="https://github.com/DOROTHEA0/PP2" target="_parent" title="website templates">GROUP7</a></p>
     </div>
   </section>
 
