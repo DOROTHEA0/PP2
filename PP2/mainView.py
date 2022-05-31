@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 import csc.models
-from csc.views import to_login
 from csc.models import Animal, CSCUser
 
 def to_main(request):
@@ -30,15 +29,29 @@ def to_main(request):
     return render(request, 'CS/index.html', {'animals': animals, 'USER': user})
 
 
-
 def to_meeting(request):
-    animals = Animal.objects.all()
     user_id = request.session.get('uid')
     try:
         user = CSCUser.objects.get(id=user_id)
     except csc.models.CSCUser.DoesNotExist:
         user = None
+
+    if request.POST.get('type') == 'upload':
+        if user is None:
+            return render(request, 'CS/login.html')
+        animal = Animal()
+        animal.discoverer = user
+        animal.animal_name = request.POST.get('aname')
+        animal.picture = request.FILES.get('picture')
+        animal.description = request.POST.get('description')
+        animal.catgories = request.POST.get('cate')
+        animal.location = request.POST.get('location')
+        animal.save()
+
+    animals = Animal.objects.all()
+
     return render(request, 'CS/meetings.html', {'animals': animals, 'USER': user})
+
 
 def to_meeting_details(request, aid):
     animal = Animal.objects.get(id=aid)

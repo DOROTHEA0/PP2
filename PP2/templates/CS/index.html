@@ -71,12 +71,14 @@
                       <ul class="nav">
                           <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                           <li><a href="{%url 'mt'%}">Showcases</a></li>
-                          <li class="scroll-to-section"><a href="#apply">Apply Now</a></li>
+                        {% if USER is not None %}
+                          <li><a href="{%url 'upload'%}">Upload Now</a></li>
+                        {% endif %}
                           <li class="has-sub">
                               <a href="javascript:void(0)">Pages</a>
                               <ul class="sub-menu">
                                   <li><a href="{%url 'mt'%}">Upcoming Animals</a></li>
-                                  <li><a href="{%url 'mt'%}">Meeting Details</a></li>
+                                  <li><a href="{%url 'mt'%}">Animal Details</a></li>
                               </ul>
                           </li>
                           <li class="scroll-to-section"><a href="#courses">Map</a></li>

@@ -9,11 +9,10 @@
     <meta name="author" content="Template Mo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <title>Citizen Science Community &#8211; Showcases List</title>
+    <title>Citizen Science Community &#8211; {{animal.animal_name}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="/static/assets/css/fontawesome.css">
@@ -22,22 +21,19 @@
     <link rel="stylesheet" href="/static/assets/css/lightbox.css">
 <!--
 
-TemplateMo 569 Edu Meeting
-
-https://templatemo.com/tm-569-edu-meeting
 
 -->
   </head>
 
 <body>
 
-   
-
   <!-- Sub Header -->
   <div class="sub-header">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-sm-8">
+          <div class="left-content">
+          </div>
         </div>
         <div class="col-lg-4 col-sm-4">
           <div class="right-icons">
@@ -46,7 +42,7 @@ https://templatemo.com/tm-569-edu-meeting
               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
               <li><a href="#"><i class="fa fa-behance"></i></a></li>
               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                {% if USER is not None %}
+              {% if USER is not None %}
               <li><a href="#">Hello {{USER.full_name}}</a></li>
                 <li><a href="{% url 'logout'%} ">Logout</a></li>
               {% else %}
@@ -66,27 +62,27 @@ https://templatemo.com/tm-569-edu-meeting
               <div class="col-12">
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
-                      <a href="main" class="logo">
+                      <a href="{% url 'main' %}" class="logo">
                           Citizen Science Community
                       </a>
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
-                          <li><a href="{%url 'main'%}">Home</a></li>
-                          <li><a href="{%url 'mt'%}" class="active">Showcases</a></li>
+                          <li><a href="{% url 'main' %}">Home</a></li>
+                          <li><a href="{% url 'mt' %}">Showcases</a></li>
                           {% if USER is not None %}
-                          <li><a href="{%url 'upload'%}">Upload Now</a></li>
+                          <li><a href="{%url 'upload'%}" class="active">Upload Now</a></li>
                           {% endif %}
                           <li class="has-sub">
                               <a href="javascript:void(0)">Pages</a>
                               <ul class="sub-menu">
-                                  <li><a href="{%url 'mt'%}">Upcoming Animals</a></li>
-                                  <li><a href="{%url 'mt'%}">Animal Details</a></li>
+                                  <li><a href="{% url 'mt' %}">Upcoming Animals</a></li>
+                                  <li><a href="#">Animal Details</a></li>
                               </ul>
                           </li>
-                          <li><a href="{%url 'main'%}">Map</a></li>
-                          <li><a href="{%url 'main'%}">Contact Us</a></li>
-                      </ul>        
+                          <li><a href="{% url 'main' %}">Map</a></li>
+                          <li><a href="{% url 'main' %}">Contact Us</a></li>
+                      </ul>
                       <a class='menu-trigger'>
                           <span>Menu</span>
                       </a>
@@ -103,54 +99,90 @@ https://templatemo.com/tm-569-edu-meeting
       <div class="row">
         <div class="col-lg-12">
           <h6>Here are our "Loot"</h6>
-          <h2>Upcoming Animals</h2>
+          <h2>Upcoming Yours</h2>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="meetings-page" id="meetings">
+ <section class="contact-us" id="contact">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-9 align-self-center">
           <div class="row">
             <div class="col-lg-12">
-              <div class="filters">
-                <ul>
-                  <li data-filter="*"  class="active">All Animals</li>
-                  <li data-filter=".Reptiles">Reptiles</li>
-                  <li data-filter=".Flying">Flying Animals</li>
-                  <li data-filter=".Mammals">Mammals</li>
-                  <li data-filter=".Insects">Insects</li>
-                  <li data-filter=".Fishes">Fishes</li>
-                  <li data-filter=".Carnivores">Carnivores</li>
-                  <li data-filter=".Other">Other</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="row grid">
-                {%for animal in animals%}
-                <div class="col-lg-4 templatemo-item-col all {{animal.catgories}}">
-                  <div class="meeting-item">
-                    <div class="thumb">
-                      <div class="price">
-                        <span>Discoverer: {{animal.discoverer.full_name}}</span>
-                      </div>
-                      <a href="{%url 'mt_d' animal.id%}"><img src="/media{{animal.picture.url}}" alt=""></a>
-                    </div>
-                    <div class="down-content">
-                      <div class="date">
-                        <h6>{{animal.discover_data.month}} <span>{{animal.discover_data.day}}</span></h6>
-                      </div>
-                      <a href="meeting-details.html"><h4>{{animal.animal_name}}</h4></a>
-                      <p>{{animal.catgories}}</p>
-                    </div>
+              <form id="contact" action="{% url 'mt' %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <input type="hidden" name="type" value="upload">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h2>Let's get in touch</h2>
+                  </div>
+                  <div class="col-lg-4">
+                    <fieldset>
+                      <input name="aname" type="text" placeholder="NAME...*" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-4">
+                    <fieldset>
+                    <input name="cate" type="text" list="typelist" placeholder="CATEGORIES...*">
+                    <datalist id="typelist">
+                    　　<option>Reptiles</option>
+                    　　<option>Flying Avian Animals</option>
+                        <option>Mammals</option>
+                        <option>Insects</option>
+                        <option>Poultry</option>
+                        <option>Fishes</option>
+                        <option>Carnivores</option>
+                        <option>Other</option>
+                    </datalist>
+                  </fieldset>
+                  </div>
+                  <div class="col-lg-4">
+                    <fieldset>
+                      <input name="location" type="text" placeholder="LOCATION...*" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <textarea name="description" type="text" class="form-control" id="message" placeholder="SOME DESCRIPTION..." required="">This is a descriptive text that you can replace with any text, such as species description, location of discovery, time of discovery, etc.</textarea>
+                    </fieldset>
+                  </div>
+                    <div class="col-lg-12">
+                    <fieldset>
+                      <input name="picture" type="file" id="" required="" accept="image/x-png,image/jpeg,image">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="button">UPLOAD MY "LOOTS"</button>
+                    </fieldset>
                   </div>
                 </div>
-                {%endfor%}
-              </div>
+              </form>
             </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="right-info">
+            <ul>
+              <li>
+                <h6>Phone Number</h6>
+                <span>010-010-0000</span>
+              </li>
+              <li>
+                <h6>Email Address</h6>
+                <span>anu@pp2.edu</span>
+              </li>
+              <li>
+                <h6>Street Address</h6>
+                <span>ANU,ANU,ANU</span>
+              </li>
+              <li>
+                <h6>Website URL</h6>
+                <span>www.anu.edu</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -171,7 +203,6 @@ https://templatemo.com/tm-569-edu-meeting
     <script src="/static/assets/js/owl-carousel.js"></script>
     <script src="/static/assets/js/lightbox.js"></script>
     <script src="/static/assets/js/tabs.js"></script>
-    <script src="/static/assets/js/isotope.js"></script>
     <script src="/static/assets/js/video.js"></script>
     <script src="/static/assets/js/slick-slider.js"></script>
     <script src="/static/assets/js/custom.js"></script>

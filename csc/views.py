@@ -9,7 +9,6 @@ def to_login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         occupation = request.POST.get('occupation')
-        print(email)
         try:
             CSCUser.objects.get(email=email)
             return render(request, 'CS/register.html', {'err_msg': '*email is already registered'})
@@ -29,5 +28,14 @@ def logout(request):
 
 def to_register(request):
     return render(request, 'CS/register.html')
+
+
+def to_upload(request):
+    user_id = request.session.get('uid')
+    try:
+        user = CSCUser.objects.get(id=user_id)
+    except CSCUser.DoesNotExist:
+        user = None
+    return render(request, 'CS/upload.html', {'USER': user})
 
 

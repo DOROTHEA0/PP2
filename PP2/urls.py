@@ -29,5 +29,6 @@ urlpatterns = [
     path('view/', mainView.to_meeting, name='mt'),
     path('login/', views.to_login, name='to_login'),
     path('register/', views.to_register, name='to_register'),
-    path('l/', views.logout, name='logout')
+    path('l/', views.logout, name='logout'),
+    path('upload/', views.to_upload, name='upload'),
 ]

@@ -21,9 +21,6 @@
     <link rel="stylesheet" href="/static/assets/css/lightbox.css">
 <!--
 
-TemplateMo 569 Edu Meeting
-
-https://templatemo.com/tm-569-edu-meeting
 
 -->
   </head>
@@ -73,12 +70,14 @@ https://templatemo.com/tm-569-edu-meeting
                       <ul class="nav">
                           <li><a href="{% url 'main' %}">Home</a></li>
                           <li><a href="{% url 'mt' %}" class="active">Showcases</a></li>
-                          <li><a href="{% url 'main' %}">Apply Now</a></li>
+                          {% if USER is not None %}
+                          <li><a href="{%url 'upload'%}">Upload Now</a></li>
+                          {% endif %}
                           <li class="has-sub">
                               <a href="javascript:void(0)">Pages</a>
                               <ul class="sub-menu">
                                   <li><a href="{% url 'mt' %}">Upcoming Animals</a></li>
-                                  <li><a href="#">Meeting Details</a></li>
+                                  <li><a href="#">Animal Details</a></li>
                               </ul>
                           </li>
                           <li><a href="{% url 'main' %}">Map</a></li>
