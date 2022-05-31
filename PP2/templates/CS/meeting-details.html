@@ -117,7 +117,7 @@
                     <span>{{animal.discoverer.full_name}}</span>
                   </div>
                   <div class="date">
-                    <h6>Nov <span>12</span></h6>
+                    <h6>{{animal.discover_data.month}} <span>{{animal.discover_data.day}}</span></h6>
                   </div>
                   <a href="meeting-details.html"><img src="/media{{animal.picture.url}}" alt=""></a>
                 </div>
@@ -125,7 +125,7 @@
                   <a href="meeting-details.html"><h4>{{animal.animal_name}}</h4></a>
                   <p>Discover by {{animal.discoverer.full_name}}, {{animal.discover_data}}</p>
                   <p class="description">
-                    {{animal.description}}
+                    {{animal.description|linebreaksbr}}
                    </p>
                   <div class="row">
                     <div class="col-lg-4">
