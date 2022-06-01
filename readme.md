@@ -1,4 +1,6 @@
-# Group Member
+# Workshop2-Group07
+
+## Group Member
 Yiyang Hou u7348129
 
 Zonghai Wang u7380405
